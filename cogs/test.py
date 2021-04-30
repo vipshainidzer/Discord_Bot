@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from random import choice
 
 
 class Test(commands.Cog):
@@ -14,6 +15,24 @@ class Test(commands.Cog):
     @commands.command()
     async def tester(self, ctx) -> None:
         await ctx.send("tested")
+
+    @commands.command(aliases=["ასწორებს", "ძერსკია"])
+    async def _8ball(self, ctx, *, question) -> None:
+        """
+        პროსტა იძახის რაღაცაებს რა
+        :param ctx: ბრძანების კონტექსტი
+        :param question: ქასთომ შეკითხვა
+        :return:
+        """
+        responses = [
+            "ძაან მაგარია!",
+            "აუუ თესლია ძმაო!",
+            "ჰაჰ პერფექტოსია!",
+            "სიგიჟეა!",
+            "არაუშავს რა!",
+            "წავა კი!",
+        ]
+        await ctx.send(f"Question: {question}\nAnswer: {choice(responses)}")
 
 
 def setup(client) -> None:

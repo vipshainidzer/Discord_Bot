@@ -1,19 +1,21 @@
 import discord
 from discord.ext import commands
 
+from random import choice
 
-class Example(commands.Cog):
+
+class HorusEye(commands.Cog):
 
     def __init__(self, client):
+        """
+        ინიციალიზაცია
+        :param client: გამშვები კლასი
+        """
         self.client = client
 
     @commands.Cog.listener()
-    async def on_ready(self) -> None:
-        print("Bot is online")
-
-    @commands.command()
-    async def ping(self, ctx) -> None:
-        await ctx.send(f"Pong {round(self.client.latency * 1000)} ms")
+    async def on_ready(self):
+        print("Horus Eye is enabled")
 
 
 def setup(client) -> None:
@@ -22,4 +24,4 @@ def setup(client) -> None:
     :param client: გამშვები კლასი
     :return: None
     """
-    client.add_cog(Example(client))
+    client.add_cog(HorusEye(client))
